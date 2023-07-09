@@ -178,7 +178,7 @@ int main() {
 		logic();
 		usleep(200000);
 	}
-
+cout<<"GAME OVER YOUR FINAL SCORE IS : "<<score<<endl;
 
 	return 0;
 }
