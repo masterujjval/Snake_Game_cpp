@@ -37,7 +37,7 @@ score=0;
 }
 
 void draw(){
-	system("clear");
+	system("clear");//change it to "cls" if you are using windows.
 
 	for(int i=0;i<width;i++)cout<<'#';
 	cout<<endl;
@@ -46,15 +46,18 @@ void draw(){
 		for(int j=0;j<width;j++){
 
 			if(j==0||j==width-1)cout<<"#";
-			else if(i==y&&j==x)cout<<"O";
+			else if(i==y&&j==x)cout<<"O"; //x and y initialising the position of the snake
 			else if(i==fruitY && j==fruitX)cout<<"F";
 			else {
+			
 				bool print=false;
 				for(int snake=0;snake<nTails;snake++){
-					if(i==tailY[snake]&&j==tailX[snake]){
+					if(i==tailY[snake]&&j==tailX[snake]){ //adding size to snake if it eats the fruit
 						cout<<'o';
 						print =true;
 					}
+					
+					
 				}if(!print)cout<<" ";
 			}
 
@@ -68,7 +71,7 @@ cout<<"Score: "<<score<<endl;
 
 }
 void input(){
-if(_kbhit()){
+if(_kbhit()){ //_kbhit is a method of conio.h library it returns if the key on keyboard is pressed or not
 	switch(getch()){
 	case 'a':
 		dir=l;
@@ -97,14 +100,14 @@ if(_kbhit()){
 }
 
 void logic(){
-	int prevX=tailX[0];
-	int prevY=tailY[0];
+	int prevX=tailX[0];   //keeping track of the previous 'o' added to snake
+	int prevY=tailY[0];    //keeping track of the previous 'o' added to snake 
 
 
 	tailX[0]=x;
 	tailY[0]=y;
 
-	int prev2X,prev2Y;
+	int prev2X,prev2Y; //taking these two variables to swap elements and to keep track of the previous 'o'
 	for(int i=1;i<nTails;i++){
 		prev2X=tailX[i];
 		prev2Y=tailY[i];
@@ -144,7 +147,7 @@ default :
 if(x<0||x>width||y<0||y>height)gameOver=true;
 
 for(int i=0;i<nTails;i++){
-	if(x==tailX[i]&&y==tailY[i])gameOver=true;
+	if(x==tailX[i]&&y==tailY[i])gameOver=true; //if snake touch its tail gameover
 }
 
 if(x==fruitX&&y==fruitY)
@@ -157,7 +160,7 @@ if(fruitX<=0||fruitY<=0){
 	fruitX=rand()%width;
 	fruitY=rand()%height;
 }
-nTails++;
+nTails++; //this defines the size or node that will be added to snake
 	}
 }
 
